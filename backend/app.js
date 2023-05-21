@@ -4,17 +4,17 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-// const { DB_SERVER } = require("./config");
+const { DB_SERVER } = require("./config");
 
-// const usersRouter = require("./routers/usersRouter");
-// const propertyRouter = require("./routers/propertyRouter");
+const usersRouter = require("./routers/usersRouter");
+const mediaRouter = require("./routers/mediaRouter");
 // const { checkToken } = require("./middlewares/checkToken");
 
-// mongoose.set("strictQuery", false);
-// mongoose
-//   .connect(DB_SERVER, { useUnifiedTopology: true })
-//   .then((db) => console.log("DB is connected"))
-//   .catch((err) => console.log(err));
+mongoose.set("strictQuery", false);
+mongoose
+  .connect(DB_SERVER, { useUnifiedTopology: true })
+  .then((db) => console.log("DB is connected"))
+  .catch((err) => console.log(err));
 
 //initializations
 const app = express();
@@ -26,11 +26,9 @@ app.use(express.json());
 // app.use("/images", express.static(path.join(__dirname, "public", "images")));
 
 //routers
-// app.use("/api/users", usersRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/media", mediaRouter);
 // app.use("/api/properties", checkToken, propertyRouter);
-app.get("/", (req, res) => {
-  res.send("Creation Age API");
-});
 
 //error handlers
 app.all("*", (req, res, next) => {
@@ -38,7 +36,7 @@ app.all("*", (req, res, next) => {
 });
 app.use((err, req, res, next) => {
   const status = err.status || 500;
-  res.status(status).json(new Error({ message: err.message }));
+  res.status(status).json(err.message || "Internal Server Error");
 });
 
 //bootstrap
