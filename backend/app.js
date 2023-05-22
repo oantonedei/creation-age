@@ -8,6 +8,7 @@ const { DB_SERVER } = require("./config");
 
 const usersRouter = require("./routers/usersRouter");
 const mediaRouter = require("./routers/mediaRouter");
+const contractRouter = require("./routers/contractRouter");
 // const { checkToken } = require("./middlewares/checkToken");
 
 mongoose.set("strictQuery", false);
@@ -28,6 +29,7 @@ app.use(express.json());
 //routers
 app.use("/api/users", usersRouter);
 app.use("/api/media", mediaRouter);
+app.use("/api/contracts", contractRouter);
 // app.use("/api/properties", checkToken, propertyRouter);
 
 //error handlers
