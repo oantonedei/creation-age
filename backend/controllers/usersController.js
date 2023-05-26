@@ -8,6 +8,7 @@ const { SECRET } = require("../config.json");
 module.exports.login = async (req, res, next) => {
   try {
     const user_client = req.body;
+    console.log(user_client);
     const user_db = await usersModel.findOne({
       user_email: user_client.user_email,
     });
@@ -42,6 +43,7 @@ module.exports.signup = async (req, res, next) => {
     const hashed_password = await bcrypt.hash(new_user.user_password, 10);
     const results = await usersModel.create({
       ...new_user,
+      user_name: new_user.firstname + " " + new_user.lastname,
       user_password: hashed_password,
     });
     res.json({ success: true, results });

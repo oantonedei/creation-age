@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './pre-login/login/login.component';
+import { SignupComponent } from './pre-login/signup/signup.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { UserService } from './user.service';
@@ -34,13 +34,13 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     HomepageComponent,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [
     {
@@ -53,8 +53,8 @@ const routes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: TokenizerInterceptor,
       multi: true,
-    }
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
