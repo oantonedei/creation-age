@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit{
             })
           );
 
-          this.router.navigate(['homepage']);
+          this.router.navigate(['explore']);
         }
       },error:(error)=>{
         console.log(error);

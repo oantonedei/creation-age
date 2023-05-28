@@ -56,41 +56,16 @@ module.exports.createProject = async (req, res, next) => {
   try {
     const user_id = req.jwt_token._id;
     const new_project = req.body;
-    const results = await mediaModel.create({...new_project, user_id});
+    const results = await mediaModel.create({ ...new_project, user_id });
     const lineage = await lineageModel.create({
       user_id,
       project_id: results._id,
       parent_id: null,
       root_id: null,
-      num_children: 0
+      num_children: 0,
     });
     res.json({ success: true, results, lineage });
   } catch (err) {
     next(err);
   }
 };
-
-// module.exports.requestPropertyById = async (req, res, next) => {
-//   try {
-//     console.log("request property by id");
-//     console.log(req.body);
-//     const { prop_id } = req.params;
-//     const user_id = req.jwt_token._id;
-//     const result = await Property.updateOne(
-//       { _id: prop_id },
-//       {
-//         $set: {
-//           request: {
-//             user_id,
-//             number_of_months: req.body.duration,
-//             start_date: req.body.startDate,
-//           },
-//           available: false,
-//         },
-//       }
-//     );
-//     res.json({ success: true, result });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
