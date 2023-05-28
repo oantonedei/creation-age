@@ -24,6 +24,14 @@ const routes: Routes = [
       canActivate: []
   },
   {
+    path: 'projects',
+    loadChildren: () =>
+      import('../modules/projects/projects-routing.module').then(
+        (m) => m.ProjectsRoutingModule
+      ),
+      canActivate: []
+  },
+  {
     path: 'error',
     loadChildren: () =>
       import('../modules/error/error-routing.module').then(
