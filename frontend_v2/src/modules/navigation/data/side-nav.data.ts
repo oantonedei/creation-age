@@ -12,7 +12,9 @@ export const sideNavSections: SideNavSection[] = [
       // 'activity logs'
       'explore',
       'analytics',
-      'projects'
+      'projects',
+      'payments',
+      'settings'
     ],
   },
 ];
@@ -20,30 +22,42 @@ export const sideNavSections: SideNavSection[] = [
 export const sideNavItems: SideNavItems = {
 
   'explore': {
-    icon: 'grip',
+    icon: 'globe',
     text: 'Explore',
     link: '/explore'
   },
   'analytics': {
-    icon: 'gauge-high',
+    icon: 'bar-chart',
     text: 'Analytics',
-    link: '/explore'
+    link: '/dashboard'
   },
   'projects': {
-    icon: 'diagram-project',
+    icon: 'folder-open',
     text: 'Projects',
     link: undefined,
     submenu: [
       {
+        icon: 'plus',
         text: 'Create Project',
         link: '/projects/create-project'
       },
       {
+        icon: 'eye',
         text: 'View Projects',
         link: '/projects/view-projects',
       },
       
     ],
+  },
+  'payments': {
+    icon: 'credit-card',
+    text: 'Payments',
+    link: '/payments',
+  },
+  'settings': {
+    icon: 'cog',
+    text: 'Settings',
+    link: '/settings',
   },
   'users': {
     icon: 'user-group',
