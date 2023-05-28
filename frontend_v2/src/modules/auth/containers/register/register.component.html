@@ -1,0 +1,77 @@
+<app-auth-layout>
+    <div class="card bg-glass">
+        <div class="card-body px-4 py-5 px-md-5">
+            <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <label class="form-label text-secondary" for="form3Example1">First name</label>
+                            <input type="text" id="form3Example1" class="form-control f16" formControlName="firstname" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <label class="form-label text-secondary" for="form3Example2">Last name</label>
+                            <input type="text" id="form3Example2" class="form-control f16" formControlName="lastname" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label text-secondary" for="form3Example3">Email address</label>
+                    <input type="email" id="form3Example3" class="form-control f16" formControlName="user_email" />
+                    <div *ngIf="user_email?.invalid && (signupForm.dirty || signupForm.touched)">
+                        <div *ngIf="!user_email?.valid" class="text-danger">Invalid email!</div>
+                    </div>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label text-secondary" for="form3Example4">Password</label>
+                    <input type="password" id="form3Example4" class="form-control f16" formControlName="user_password" />
+                </div>
+
+                <!-- Role input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label text-secondary" for="form3Example4">User role</label>
+                    <select name="user_role" class="form-select f16" formControlName="user_role">
+                        <option value=""> </option>
+                        <option value="software engineer">Software Engineer</option>
+                        <option value="marketer">Marketer</option>
+                        <option value="sales">Sales</option>
+                        <option value="customer service">Customer Service</option>
+                        <option value="human resources">Human Resources</option>
+                    </select>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn app-btn-primary w-100 mb-4" [disabled]="!signupForm.valid">
+                    Sign up
+                </button>
+                <p class="text-secondary mb-3 text-center">Already have an account? <a class="btn-link" [routerLink]="['/auth']" routerLinkActive="active" >Sign in </a></p>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                    <p>or sign up with:</p>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-google"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-github"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</app-auth-layout>

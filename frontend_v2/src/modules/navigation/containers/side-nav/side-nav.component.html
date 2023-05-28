@@ -1,0 +1,18 @@
+<nav class="sb-sidenav accordion" id="sidenavAccordion" [ngClass]="[sidenavStyle, 'bg-white2 shadow-sm']" >
+    <div class="sb-sidenav-menu">
+        <div class="nav">
+            <ng-container *ngFor="let section of sideNavSections"
+                ><div class="sb-sidenav-menu-heading d-none" *ngIf="section.text">{{ section.text }}</div><div class="py-3"></div>
+                <ng-container *ngFor="let item of section.items">
+                    <input type="hidden" [routerLink]="sideNavItems[item].link" routerLinkActive #activeStatus="routerLinkActive" />
+                    <sb-side-nav-item [sideNavItem]="sideNavItems[item]" [isActive]="activeStatus.isActive" [expanded]="isActiveLinkExistInSectionItem(item)"></sb-side-nav-item>
+                    </ng-container
+            ></ng-container>
+        </div>
+    </div>
+    <div class="sb-sidenav-footer bg-white text-dark shadow-sm py-3">
+        <div class="small">Version: 1.0.0</div>
+        <!-- <div class="small">Logged in as:</div>
+        <span *ngIf="userService.user$ | async as user">{{user.firstName}} {{user.lastName}}</span> -->
+    </div>
+</nav>

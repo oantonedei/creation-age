@@ -1,0 +1,68 @@
+<div class="modal-header border-0">
+    <h4 class="modal-title mb-0" id="modal-basic-title"></h4>
+   
+    <button
+    (click)="activeModal.dismiss('Cross click')"
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+  ></button>
+      <!-- <fa-icon [icon]="['fas', 'times']"></fa-icon> -->
+  </div>
+  <div class="modal-body">
+    <img
+      src="assets/images/sent-for-authorization-img2-min.png"
+      class="img-fluid d-block mx-auto my-3 w-100"
+      style="max-width: 200px"
+    />
+    <div
+      class="text-center mt-4 mx-md-5"
+    >
+      <h3 class="text-dark">Deactivate User Group</h3>
+      <p class="text-secondary f14">
+        Are you sure you want to deactivate this User Group?    </p>
+    </div>
+    <!-- <div
+      class="text-center mt-4 mx-md-5"
+    >
+      <h3 class="text-dark">Re-activate User</h3>
+      <p class="text-secondary f14">
+         Are you sure you want to re-activate this user?    </p>
+    </div> -->
+    <div class="form-group mt-3">
+      <label for="comment"> Narration </label>
+      <textarea
+        id="comment"
+        rows="3"
+        class="form-control bg-light"
+      >
+      </textarea>
+      <!-- <p class="form-control-error" >
+        fghbj</p> -->
+    </div>
+  </div>
+  <div class="modal-footer justify-content-center">
+    <button
+      type="button"
+      class="btn confirm px-4 btn-white text-danger"
+    >
+      <!-- <fa-icon></fa-icon> -->
+      Yes, Deactivate.  </button>
+    <!-- <button
+      *ngIf="customerRef.appActivityStatus == 'INACTIVE'"
+      type="button"
+      class="btn confirm px-4 btn-white text-danger"
+      (click)="reactivateCustomer()"
+    > -->
+      <!-- <fa-icon></fa-icon>
+       Yes, Re-activate.   </button> -->
+    <button
+      type="button"
+      class="btn no-confirm mr-2 px-4"
+    >
+      <!-- <fa-icon></fa-icon>   -->
+      No, go back. 
+    </button>
+  </div>
+  

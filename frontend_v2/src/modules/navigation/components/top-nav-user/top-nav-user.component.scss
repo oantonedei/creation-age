@@ -1,0 +1,22 @@
+@import '/src/styles/variables';
+
+#userDropdown {
+    cursor: pointer;
+    padding-bottom: 20px;
+}
+#userDropdown::after{
+    vertical-align: -4px;
+}
+.initial{
+    width:34px;
+    height:34px;
+    border:3px solid $app-blue-light !important;
+}
+
+.initial p{
+    margin-top: 4px;
+}
+
+.user-name p{
+    line-height: 10px;
+}

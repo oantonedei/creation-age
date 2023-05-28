@@ -1,0 +1,8 @@
+<div class="row gy-0">
+    <div class="col-12" *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (closed)="close(alert)">
+            <h6 class="f14 mb-1"><i class="{{getIcon(alert.type)}}"></i> {{alert.title}}</h6>
+            <p class="f14 ps-4">{{alert.message}}</p>
+        </ngb-alert>
+    </div>
+</div>
