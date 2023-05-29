@@ -22,15 +22,38 @@ const routes: Routes = [
     component: ProjectsComponent,
   },
   {
-    path: ':projectId',
-    component: ProjectDetailComponent,
-    canActivate: []
+    path: 'create',
+    data: {
+      title: 'Create Project',
+      breadcrumbs: [
+        {
+          text: 'Create Project',
+          active: true,
+        },
+      ],
+    } as SBRouteData,
+    canActivate: [],
+    component: CreateProjectComponent,
   },
   {
-    path: 'create',
-    component: CreateProjectComponent,
-    canActivate: []
-  }
+    path: ':projectId',
+    data: {
+      title: 'Project Detail',
+      breadcrumbs: [
+        {
+          text: 'My Projects',
+          link: '/projects',
+        },
+        {
+          text: 'Project Detail',
+          active: true,
+        },
+      ],
+    } as SBRouteData,
+    component: ProjectDetailComponent,
+    canActivate: [],
+  },
+  
 ];
 
 @NgModule({
