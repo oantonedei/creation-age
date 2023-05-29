@@ -10,8 +10,8 @@ const routes: Routes = [
   {
     path: 'explore',
     loadChildren: () =>
-      import('../modules/dashboard/dashboard-routing.module').then(
-        (m) => m.DashboardRoutingModule
+      import('../modules/explore/explore-routing.module').then(
+        (m) => m.ExploreRoutingModule
       ),
       canActivate: []
   },

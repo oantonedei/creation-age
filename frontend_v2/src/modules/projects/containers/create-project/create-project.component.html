@@ -1,1 +1,54 @@
-<p>create-project works!</p>
+<sb-layout-dashboard>
+    <sb-dashboard-head title="Create Project" [hideBreadcrumbs]="false"></sb-dashboard-head>
+
+    <div class="row gy-3">
+        <div class="col-xl-4 col-lg-6 col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h6 class="m-0">Project Information</h6>
+                </div>
+                <div class="card-body">
+                    <form class="row gy-3">
+                        <div class="col-12">
+                            <label for="name" class="text-secondary">* Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Project name" />
+                        </div>
+                        <div class="col-12">
+                            <label for="description" class="text-secondary">* Description</label>
+                            <textarea type="text" id="description" class="form-control"
+                                placeholder="Project description"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="industry" class="text-secondary">* Industry</label>
+                            <select id="industry" class="form-select">
+                                <option>- Choose option -</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Eductaion">Education</option>
+                                <option value="Health">Health</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="phase" class="text-secondary">* Phase</label>
+                            <select class="form-select" id="phase">
+                                <option>- Choose option -</option>
+                                <option value="Initiation">Initiation</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="status" class="text-secondary">* Status</label>
+                            <select class="form-select" id="status">
+                                <option>- Choose option -</option>
+                                <option value="open">Open</option>
+                                <option value="close">Close</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer d-flex justify-content-end bg-white">
+                    <button type="button" class="btn app-btn-primary px-4"><i class="fa fa-check-circle"></i> Create</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</sb-layout-dashboard>
