@@ -6,10 +6,11 @@ import { AppCommonModule } from '@common/app-common.module';
 import { NavigationModule } from '@modules/navigation/navigation.module';
 
 import { ExploreComponent } from './container/explore/explore.component';
+import { ViewProjectComponent } from './container/view-project/view-project.component';
 
 
 @NgModule({
-  declarations: [ExploreComponent],
+  declarations: [ExploreComponent, ViewProjectComponent],
   imports: [
     CommonModule,
     AppCommonModule,
