@@ -1,14 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const LineageSchema = new mongoose.Schema(
-  {
+const LineageSchema = new mongoose.Schema({
     user_id: String,
     project_id: String,
     parent_id: String,
     root_id: String,
     num_children: Number,
-  },
-  { timestamps: true }
-);
+}, {timestamps: true});
 
-module.exports = mongoose.model("lineage", LineageSchema);
+module.exports = mongoose.model('lineage', LineageSchema);

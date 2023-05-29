@@ -21,21 +21,9 @@ export class UserService {
   }
   constructor(private http: HttpClient) {}
 
-  login(user: { user_email: string; user_password: string }) {
+  login(user: { email: string; password: string }) {
     return this.http.post<{ success: boolean; results: string }>(
       this.SERVER + '/api/users/login',
-      user
-    );
-  }
-  signup(user: {
-    firstname: string;
-    lastname: string;
-    user_email: string;
-    user_password: string;
-    user_role: string;
-  }) {
-    return this.http.post<{ success: boolean; results: string }>(
-      this.SERVER + '/api/users/signup',
       user
     );
   }
