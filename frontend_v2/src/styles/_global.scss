@@ -1,0 +1,365 @@
+// Global styling for this template
+
+html,
+body {
+  height: 100%;
+  font-size: 13px;
+}
+
+// Set spacing on containers for page symmetry
+
+.container,
+.container-fluid {
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
+}
+
+// ===========================================
+p {
+  margin-bottom: 0;
+}
+
+.bg-app-blue {
+  background-color: $app-blue !important;
+  color: #fff;
+}
+
+.bg-app-lblue {
+  background-color: $app-blue-light !important;
+  color: #fff;
+}
+
+.bg-app-dblue {
+  background-color: $app-blue-dark !important;
+  color: #fff;
+}
+.bg-app-dblue2 {
+  background-color: $app-blue-dark2 !important;
+  color: #fff;
+}
+.text-app-blue {
+  color: $app-blue;
+}
+
+.app-btn-primary {
+  color: #fff;
+  background-color: $app-blue;
+  border-color: $app-blue;
+}
+.bg-gray{
+  background-color: var(--gray);
+  color: #fff;;
+}
+.bg-dark-gray{
+  background-color: var(--gray-dark);
+  color: #fff;;
+}
+.bg-light2{
+  background-color: #F4F5F9;
+  color: $dark;
+}
+
+.bg-white2{
+  background-color: #fbfbfb !important;
+  color: $dark;
+}
+
+.app-btn-primary:hover,
+.app-btn-primary:active,
+.app-btn-primary:focus,
+.app-btn-primary.disabled,
+.app-btn-primary:disabled,
+.app-btn-primary:not(:disabled):not(.disabled):active,
+.app-btn-primary:not(:disabled):not(.disabled).active,
+.show > .app-btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: $app-blue-dark;
+  border-color: $app-blue-dark;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 103, 140, 50%) !important;
+}
+
+.app-btn-outline-primary {
+  color: $app-blue;
+  border-color: $app-blue;
+}
+
+.app-btn-outline-primary:hover,
+.app-btn-outline-primary:active,
+.app-btn-outline-primary:focus {
+  color: #fff !important;
+  background-color: $app-blue !important;
+  border-color: $app-blue !important;
+}
+
+.app-btn-outline-primary.disabled,
+.app-btn-outline-primary:disabled {
+  color: $app-blue !important;
+  background-color: transparent !important;
+}
+
+.btn-excel {
+  color: #fff;
+  border-color: $excel-green;
+  background-color: $excel-green;
+}
+
+.btn-excel:hover,
+.btn-excel:active,
+.btn-excel:focus {
+  color: #fff !important;
+  background-color: $excel-light-green !important;
+  border-color: $excel-light-green !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: $app-blue !important;
+}
+
+label {
+  margin-bottom: 4px;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #0085b5;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 103, 140, 25%);
+}
+
+.text-shadow {
+  text-shadow: 0px 0px 4px #000;
+}
+
+.accordion-icon svg {
+  transition: 0.5s;
+}
+
+.accordion-icon.expanded svg {
+  rotate: 180deg !important;
+}
+.accordion .card-body {
+  padding: 0;
+}
+
+.panel-card .card-header {
+  padding: 8px 12px;
+}
+
+.panel-card .card-header .btn:focus,
+.panel-card .card-header .btn.focus {
+  outline: 0;
+  box-shadow: none !important;
+}
+
+.wp-scroll-tab {
+  .wp-tab-header {
+    font-size: 12px;
+  }
+  .p-tabview-nav-link {
+    padding: 8px 18px !important;
+  }
+  .p-tabview-nav-link:hover,
+  .p-tabview-nav-link:focus {
+    text-decoration: none;
+  }
+  .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+    box-shadow: none !important;
+  }
+
+  .p-tabview-nav-btn.p-link {
+    width: 18px;
+    .pi {
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+  }
+  .p-tabview-panels {
+    padding: 4px 2px;
+  }
+}
+.p-element .pi {
+  font-size: 0.8rem;
+}
+.modal-backdrop {
+  z-index: 1090 !important;
+}
+.modal-window {
+  z-index: 1090 !important;
+}
+.btn-remove-outline:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.btn.btn-close {
+  opacity: 0.5;
+}
+.btn.btn-close:hover {
+  opacity: 0.8;
+}
+.form-control-error {
+  color: $danger;
+  border-left: 3px solid $danger;
+  background-color: $light;
+  font-size: 12px;
+  padding: 2px 4px;
+  margin-top: 4px;
+}
+.w-100 {
+  .p-inputnumber {
+    width: 100%;
+    input {
+      width: 100%;
+    }
+  }
+  span {
+    width: 100%;
+    input {
+      width: 100%;
+    }
+  }
+}
+.hide-caret::after{
+  display: none;
+}
+.hide-header .card-header{
+  display: none !important;
+}
+.max-width-300{
+  max-width: 300px;
+}
+.max-width-400{
+  max-width: 400px;
+}
+.sb-sidenav-collapse-arrow .ng-fa-icon{
+  margin-right: 4px;
+}
+.circle-icon {
+  background: #c3d5ff;
+  padding:6px;
+  border-radius: 50%;
+  width: 30px;
+  height:30px;
+  text-align: center;
+}
+
+.rounded-4{
+  border-radius: 4px !important;
+}
+.rounded-6{
+  border-radius: 6px !important;
+}
+.rounded-8{
+  border-radius: 8px !important;
+}
+.rounded-10{
+  border-radius: 10px !important;
+}
+.menu-card{
+  transition: .5s;
+}
+.menu-link:hover{
+  text-decoration: none;
+}
+.menu-card:hover{
+  transform: scale(1.05);
+}
+.icon-bg{
+  background-color: #418EAA;
+  color: #fff;
+}
+.p-datatable .p-datatable-header,
+.p-datatable .p-datatable-footer{
+  background-color: $white;
+}
+.nav-link.active{
+  margin: 1px;
+}
+
+.z-index-1090{
+  z-index: 1090 !important;
+}
+
+.p-autocomplete-items{
+  max-width: 300px;
+}
+.p-autocomplete-item{
+  border-bottom: 1px solid #dee2e6 !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: $app-blue;
+}
+
+.nav-pills .nav-link.active:focus-visible, 
+.nav-pills .show > .nav-link:focus-visible {
+  outline: none;
+}
+
+.nav-pills .nav-link, 
+.nav-pills > .nav-link {
+  //color: $gray-600;
+  color: $app-blue-light3;
+}
+
+.page-link{ 
+  color: $app-blue !important;
+}
+
+.page-item.active .page-link {
+  color: #fff !important;
+  background-color: $app-blue !important;
+  border-color: $app-blue !important;
+}
+.accordion-button{
+  font-weight: 600;
+}
+.accordion-button:not(.collapsed) {
+  color: $app-blue;
+  background-color: var(--bs-light);
+  font-weight: 700;
+}
+
+.accordion-button:focus{
+  box-shadow: none;
+}
+
+.form-check-input{
+  width:16px;
+  height: 16px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.accordion-body{
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.form-check-input:checked {
+  background-color: $app-blue;
+  border-color: $app-blue;
+}
+.ng-dropdown-panel{
+  z-index: 1090 !important;
+}
+.table-action.dropdown-toggle::after{
+  content: unset;
+}
+
+.btn-link{
+  color: $app-blue;
+}
+
+.btn-link:hover{
+  color: $app-blue-dark;
+}

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,11 +9,14 @@ import { Router } from '@angular/router';
 export class WelcomeComponent {
   router = inject(Router);
   title = 'Welcome to Creation Age!';
-  checker = "signup";
+  @Input() checker = "login";
   signupPage = () => {
     this.checker = "signup";
   };
   loginPage = () => {
     this.checker = "login";
+  };
+  loginSwitch = (event: string) => {
+    this.checker = event;
   };
 }

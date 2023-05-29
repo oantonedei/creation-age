@@ -1,0 +1,38 @@
+// Import Custom Variables
+@import "_variables.scss";
+
+// Import Bootstrap
+//@import "bootstrap/scss/bootstrap.scss";
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+// font-awesome
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+// @import 'primeicons/primeicons.css';
+// @import 'primeng/resources/themes/bootstrap4-light-purple/theme.css';
+// @import 'primeng/resources/primeng.min.css';
+
+// @import '~quill/dist/quill.core.css';
+// @import '~quill/dist/quill.snow.css';
+
+// Import Custom SCSS
+@import "_global.scss";  
+@import 'fonts.scss';
+
+// Layout
+@import "layout/_authentication.scss";
+@import "layout/_dashboard-default.scss";
+@import "layout/_dashboard-fixed.scss";
+@import "layout/_error.scss";
+
+// Navigation
+@import "navigation/_nav.scss";
+@import "navigation/_topnav.scss";
+@import "navigation/sidenav/_sidenav.scss";
+@import "navigation/sidenav/_sidenav-dark.scss";
+@import "navigation/sidenav/_sidenav-light.scss";
+
+@import 'ngx-toastr/toastr-bs5-alert';
+
+

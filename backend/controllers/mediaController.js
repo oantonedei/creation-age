@@ -3,6 +3,45 @@ const mediaModel = require("../models/mediaModel");
 const contractModel = require("../models/contractModel");
 
 //Here, the audio file will be converted to text using 3rd-party API, and will be saved in the public folder, and the path will be saved in the database. The path will be used to access the file from the frontend.
+module.exports.getAllMedia = async (req, res, next) => {
+  try {
+    const results = await mediaModel.find();
+    res.json({ success: true, results });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.getAllOpenMedia = async (req, res, next) => {
+  try {
+    const results = await mediaModel.find({ status: "open" });
+    res.json({ success: true, results });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.getAllCloseMedia = async (req, res, next) => {
+  try {
+    const results = await mediaModel.find({ status: "close" });
+    res.json({ success: true, results });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.getAllParticipatorMedia = async (req, res, next) => {
+  try {
+    const id = req.jwt_token._id;
+    const results = await mediaModel.find({
+      participants: { $elemMatch: { participant_id: id } },
+    });
+    res.json({ success: true, results });
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports.divergeMedia = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -14,8 +53,8 @@ module.exports.divergeMedia = async (req, res, next) => {
       description: project.description,
       industry: project.industry,
       phase: project.phase,
-      numberOfRequiredParticipants: project.numberOfRequiredParticipants,
-      participants: project.participants,
+      status: project.status,
+      participants: [],
       user_id: user_id,
     });
     const parent_lineage = await lineageModel.findOne({ project_id: id });
@@ -51,23 +90,32 @@ module.exports.divergeMedia = async (req, res, next) => {
   }
 };
 
-module.exports.createContract = async (req, res, next) => {
+module.exports.addParticipant = async (req, res, next) => {
   try {
     const { id } = req.params;
     const user_id = req.jwt_token._id;
-    const new_contract = req.body;
+    const new_participant = req.body;
     const contract = await contractModel.create({
-      contract_type: new_contract.contract_type,
-      contract_status: new_contract.contract_status,
-      participants: new_contract.participants,
+      contract_type: new_participant.contract_type,
+      contract_status: "pending",
+      skill: new_participant.skill,
+      percentage_offered: new_participant.percentage_offered,
       user_id,
       project_id: id,
     });
     const results = await mediaModel.updateOne(
       { _id: id },
-      { $set: { participants: new_contract.participants, contract_id: contract._id } }
+      {
+        $push: {
+          participants: {
+            skill: new_participant.skill,
+            percentage_offered: new_participant.percentage_offered,
+            contract_id: contract._id,
+          },
+        },
+      }
     );
-    res.json({ success: true, results, contract });
+    res.json({ success: true, results });
   } catch (err) {
     next(err);
   }

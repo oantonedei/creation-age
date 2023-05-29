@@ -1,0 +1,51 @@
+<div class="modal-header border-0">
+  <h4 class="modal-title mb-0" id="modal-basic-title"></h4>
+  <button
+    type="button"
+    class="btn-close btn btn-remove-outline"
+    aria-label="Close"
+    (click)="dismiss()"
+  >
+  </button>
+</div>
+<div class="modal-body">
+  <img src="assets/images/{{image}}" class="img-fluid d-block mx-auto my-3 w-100" style="max-width: 200px" />
+  <div class="text-center mt-4 mx-md-5">
+    <h3 class="text-dark">{{ title }}</h3>
+    <p class="text-secondary f14" *ngIf="message">{{ message }}</p>
+  </div>
+  <div class="form-group mt-3" *ngIf="displayComment">
+    <label for="comment"
+      >{{ commentRequired ? "*" : "" }} {{ commentLabel }}</label
+    >
+    <textarea
+      id="comment"
+      rows="3"
+      [formControl]="comment"
+      class="form-control"
+      placeholder="Enter {{ commentLabel | lowercase }}"
+    ></textarea>
+    <p
+      class="form-control-error"
+      *ngIf="
+        comment?.hasError('required') && (comment.touched || comment.dirty)
+      "
+    >
+      {{ commentLabel | titlecase }} is required
+    </p>
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-secondary border mr-2 px-4"
+    (click)="dismiss()"
+  >
+  <i class="fa fa-times"></i> {{ cancelText }}
+  </button>
+  <button type="button" class="btn app-btn-primary px-4" (click)="submit()">
+    
+    <i class="fa fa-check-circle"></i>
+    {{ okText }}
+  </button>
+</div>
