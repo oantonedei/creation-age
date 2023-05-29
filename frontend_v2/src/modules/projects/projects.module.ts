@@ -6,13 +6,15 @@ import { ProjectDetailComponent } from './containers/project-detail/project-deta
 import { ProjectsComponent } from './containers/projects/projects.component';
 import { AppCommonModule } from '@common/app-common.module';
 import { NavigationModule } from '@modules/navigation/navigation.module';
+import { CreateParticipantComponent } from './components/create-participant/create-participant.component';
 
 
 @NgModule({
   declarations: [
     CreateProjectComponent,
     ProjectDetailComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    CreateParticipantComponent
   ],
   imports: [
     CommonModule,

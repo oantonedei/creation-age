@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h4 class="modal-title">New Participant</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form class="row gy-3">
+       
+        <div class="col-12">
+            <label for="skill" class="text-secondary">* Skill</label>
+            <select id="skill" class="form-select">
+                <option>- Choose option -</option>
+                <option value="Angular">Angular</option>
+                <option value="Node">Node</option>
+                <option value="Express">Express</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <label for="percentage" class="text-secondary">* Percentage</label>
+            <input type="text" id="percentage" min="0" max="100" class="form-control" placeholder="Percentage equity %" />
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn app-btn-primary"><i class="fa fa-check-circle"></i> Create</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="dismiss()"><i class="fa fa-times-circle"></i> Cancel</button>
+</div>
