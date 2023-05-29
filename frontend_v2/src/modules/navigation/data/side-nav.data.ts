@@ -29,7 +29,7 @@ export const sideNavItems: SideNavItems = {
   'analytics': {
     icon: 'bar-chart',
     text: 'Analytics',
-    link: '/dashboard'
+    link: '/analytics'
   },
   'projects': {
     icon: 'folder-open',

@@ -40,6 +40,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'analytics',
+    loadChildren: () =>
+      import('../modules/analytics/analytics-routing.module').then(
+        (m) => m.AnalyticsRoutingModule
+      ),
+      canActivate: []
+  },
+  {
     path: 'error',
     loadChildren: () =>
       import('../modules/error/error-routing.module').then(

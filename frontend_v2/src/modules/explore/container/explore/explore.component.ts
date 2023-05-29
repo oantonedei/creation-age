@@ -1,12 +1,5 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
-import {
-  NgbCarousel,
-  NgbCarouselModule,
-  NgbSlideEvent,
-  NgbSlideEventSource,
-} from '@ng-bootstrap/ng-bootstrap';
-import { NgFor } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-explore',
@@ -15,6 +8,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./explore.component.scss'],
 })
 export class ExploreComponent {
+  router= inject(Router);
   count = [
     { name: "Creation Age", value: "1" },
     { name: "Creation Age Version 2", value: "2" },
@@ -26,5 +20,6 @@ export class ExploreComponent {
   ];
   viewProject(event: any) {
     console.log(event);
+    this.router.navigate(['/projects/1']);
   }
 }

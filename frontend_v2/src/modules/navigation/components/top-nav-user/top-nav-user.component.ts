@@ -9,16 +9,17 @@ import { iif, Subscription } from 'rxjs';
 })
 export class TopNavUserComponent implements OnInit, OnDestroy {
     user!: any | null;
+    role = "Software Developer"
     userSubscription!: Subscription;
     constructor(
         private cd: ChangeDetectorRef) { }
     ngOnInit() {
         this.user = {
-            displayName: 'Damon salvatore',
+            displayName: 'Jason',
             user: {
-                firstName: 'Damon',
-                lastName: 'Salvatore',
-                email: 'damon@yahoo.com'
+                firstName: 'Jason',
+                lastName: 'Wonimidei',
+                email: 'jason@miu.edu'
             }
         };
     }

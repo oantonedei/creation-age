@@ -3,7 +3,7 @@
         <div class="d-flex flex-row float-start">
             <div class="flex-fill d-none d-sm-block user-name">
                 <h6 class="f12 mt-2">Hi, {{ user.displayName }}</h6>
-                <p class="text-mute f10 mt-n2 text-end text-capitalize">{{'System User'}}</p>
+                <p class="text-mute f10 mt-n2 text-end text-capitalize">{{role}}</p>
             </div>
             <div class="px-md-1 px-0">
                 <div class="bg-app-blue border rounded-circle initial shadow-sm">
@@ -24,6 +24,7 @@
         <!-- <a class="dropdown-item" routerLink="/dashboard">Settings</a>
         <a class="dropdown-item" routerLink="/dashboard">Activity Log</a>
         <div class="dropdown-divider"></div> -->
+        <a class="dropdown-item" routerLink="/profile">View Profile</a>
         <a class="dropdown-item" (click)="logout()">Logout</a>
     </div>
 </li>
