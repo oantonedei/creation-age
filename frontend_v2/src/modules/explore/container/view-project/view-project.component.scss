@@ -1,0 +1,17 @@
+.banner{
+    background-color: #555;
+    // background-image: url('../images/img4.jpg');
+    background: linear-gradient(rgba(20, 20, 20, 0), rgba(20, 20, 20, .2)), url('../../../../assets/images/banner.jpg');
+      background-position-x: 0%, 0%;
+      background-position-y: 0%, 0%;
+      background-repeat: repeat, repeat;
+      background-size: auto, auto;
+    // filter: blur(3px);
+    // -webkit-filter: blur(1px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+  
+}
+
