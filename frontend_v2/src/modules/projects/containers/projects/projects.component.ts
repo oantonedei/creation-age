@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Alert} from "@common/models";
 
 @Component({
   selector: 'app-projects',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ProjectsComponent {
 
+
+  cards: String[] = ['a','b','c','d','e','f','g','h','i','j','k','l','m'];
+
+  goToDetail(id: number): void {
+
+  }
 }
