@@ -5,35 +5,27 @@
     ></sb-dashboard-head>
 
   <div class="row gy-3">
-
-    <div class="mb-5 d-flex justify-content-between gap-2">
+    <div class="mb-5 d-flex flex-column flex-sm-row justify-content-between gap-2">
       <button class="btn btn-secondary">
         <i class="fa fa-add"></i>
         Add New
       </button>
-      <div class="text-end d-flex justify-content-between w-25">
-        <input type="text" id="form3Example3" class="form-control" placeholder="Search Project..." />
-        <button
-          type="button"
-          class="btn btn-sm"
-        >
-          <i class="fa fa-list fa-1x text-secondary" aria-hidden="true"></i>
-        </button>
-
-        <button
-          type="button"
-          class="btn btn-sm btn-primary-two"
-        >
-          <i class="fa fa-th-large fa-1x text-white" aria-hidden="true"></i>
-        </button>
-
-        <button type="button" class="btn" id="db1" >
-          <i class="fa fa-ellipsis-h text-secondary" aria-hidden="true"></i>
-        </button>
-
+      <div class="text-end mt-2 mt-sm-0">
+        <div class="d-flex justify-content-between">
+          <input type="text" id="searchProject" class="form-control mb-2 mb-sm-0" placeholder="Search Project..." />
+          <button type="button" class="btn btn-sm">
+            <i class="fa fa-list fa-1x text-secondary" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-sm btn-primary-two">
+            <i class="fa fa-th-large fa-1x text-white" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn" id="db1">
+            <i class="fa fa-ellipsis-h text-secondary" aria-hidden="true"></i>
+          </button>
         </div>
-
+      </div>
     </div>
+
   </div>
     <div class="row gy-3">
 
