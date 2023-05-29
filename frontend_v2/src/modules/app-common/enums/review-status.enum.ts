@@ -1,6 +1,0 @@
-export enum ReviewStatus{
-    PENDING='PENDING',
-    CANCELED='CANCELED',
-    REJECTED='REJECTED',
-    AUTHORIZED='AUTHORIZED'
-}

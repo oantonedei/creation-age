@@ -7,14 +7,13 @@ const MediaSchema = new mongoose.Schema(
     description: String,
     industry: String,
     phase: String,
-    status: String,
+    contract_id: String,
+    numberOfRequiredParticipants: Number,
     participants: [
       {
         participant_id: String,
-        participant_name: String,
         skill: String,
         percentage_offered: Number,
-        contract_id: String,
       },
     ],
   },

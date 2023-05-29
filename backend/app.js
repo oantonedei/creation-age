@@ -23,7 +23,7 @@ const app = express();
 //middlewares
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 // app.use("/images", express.static(path.join(__dirname, "public", "images")));
 
 //routers
