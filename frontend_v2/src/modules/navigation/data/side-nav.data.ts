@@ -39,12 +39,12 @@ export const sideNavItems: SideNavItems = {
       {
         icon: 'plus',
         text: 'Create Project',
-        link: '/projects/create-project'
+        link: '/projects/create'
       },
       {
         icon: 'eye',
         text: 'View Projects',
-        link: '/projects/view-projects',
+        link: '/projects',
       },
       
     ],
