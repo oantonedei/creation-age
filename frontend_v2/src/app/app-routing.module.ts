@@ -13,7 +13,7 @@ const routes: Routes = [
       import('../modules/explore/explore-routing.module').then(
         (m) => m.ExploreRoutingModule
       ),
-      canActivate: []
+    canActivate: [],
   },
   {
     path: 'auth',
@@ -21,7 +21,7 @@ const routes: Routes = [
       import('../modules/auth/auth.routing.module').then(
         (m) => m.AuthRoutingModule
       ),
-      canActivate: []
+    canActivate: [],
   },
   {
     path: 'projects',
@@ -29,7 +29,15 @@ const routes: Routes = [
       import('../modules/projects/projects-routing.module').then(
         (m) => m.ProjectsRoutingModule
       ),
-      canActivate: []
+    canActivate: [],
+  },
+  {
+    path: 'profile',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('../modules/profile/profile-routing.module').then(
+        (m) => m.ProfileRoutingModule
+      ),
   },
   {
     path: 'error',
@@ -45,11 +53,11 @@ const routes: Routes = [
       import('../modules/error/error-routing.module').then(
         (m) => m.ErrorRoutingModule
       ),
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
