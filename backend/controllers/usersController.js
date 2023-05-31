@@ -8,7 +8,6 @@ const { SECRET } = require("../config.json");
 module.exports.login = async (req, res, next) => {
   try {
     const user_client = req.body;
-    console.log(user_client);
     const user_db = await usersModel.findOne({
       user_email: user_client.user_email,
     });
@@ -18,7 +17,12 @@ module.exports.login = async (req, res, next) => {
         user_db.user_password
       );
       if (!match) {
-        return next(new Error("User Authentication Failed"));
+        return next({
+          status: 401,
+          success: false,
+          results: null,
+          message: "User Authentication Failed. Wrong Password",
+        });
       }
       const token = jwt.sign(
         {
@@ -29,9 +33,19 @@ module.exports.login = async (req, res, next) => {
         },
         SECRET
       );
-      res.json({ success: true, results: token });
+      res.json({
+        status: 200,
+        success: true,
+        results: token,
+        message: "User Authenticated",
+      });
     } else {
-      return next(new Error("User Not Found"));
+      return next({
+        status: 404,
+        success: false,
+        results: null,
+        message: "User Not Found",
+      });
     }
   } catch (err) {
     next(err);
@@ -46,7 +60,7 @@ module.exports.signup = async (req, res, next) => {
       user_name: new_user.firstname + " " + new_user.lastname,
       user_password: hashed_password,
     });
-    res.json({ success: true, results });
+    res.json({status: 200, success: true, results, message: "User Created" });
   } catch (err) {
     next(err);
   }

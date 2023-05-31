@@ -3,6 +3,12 @@
     <div class="card bg-glass">
         <div class="card-body px-4 py-5 px-md-5">
             <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div *ngIf="error === true" class="alert alert-danger" role="alert">
+                    {{errorMessage}}
+                </div>
+                <div *ngIf="success === true" class="alert alert-success" role="alert">
+                    Login Successful
+                </div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label text-secondary" for="form3Example3">Email address</label>

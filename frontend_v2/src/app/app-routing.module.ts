@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService } from '@modules/auth/services/user.service';
 
 const routes: Routes = [
   {
@@ -13,7 +14,9 @@ const routes: Routes = [
       import('../modules/explore/explore-routing.module').then(
         (m) => m.ExploreRoutingModule
       ),
-    canActivate: [],
+    canActivate: [
+      () => (inject(UserService)._userState.value.jwt ? true : false),
+    ],
   },
   {
     path: 'auth',
@@ -45,7 +48,7 @@ const routes: Routes = [
       import('../modules/analytics/analytics-routing.module').then(
         (m) => m.AnalyticsRoutingModule
       ),
-      canActivate: []
+    canActivate: [],
   },
   {
     path: 'error',

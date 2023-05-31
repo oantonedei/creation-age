@@ -3,6 +3,12 @@
         <div class="card-body px-4 py-5 px-md-5">
             <form [formGroup]="signupForm" (ngSubmit)="signup()">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div *ngIf="error === true" class="alert alert-danger" role="alert">
+                    {{errorMessage}}
+                </div>
+                <div *ngIf="success === true" class="alert alert-success" role="alert">
+                    Sign Up Successful
+                </div>
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">
@@ -19,12 +25,12 @@
                 </div>
 
                 <!-- Email input -->
+                <div *ngIf="user_email?.invalid && (signupForm.dirty || signupForm.touched)">
+                    <div *ngIf="!user_email?.valid" class="alert alert-danger" role="alert">Invalid email!</div>
+                </div>
                 <div class="form-outline mb-4">
                     <label class="form-label text-secondary" for="form3Example3">Email address</label>
-                    <input type="email" id="form3Example3" class="form-control f16" formControlName="user_email" />
-                    <div *ngIf="user_email?.invalid && (signupForm.dirty || signupForm.touched)">
-                        <div *ngIf="!user_email?.valid" class="text-danger">Invalid email!</div>
-                    </div>
+                    <input type="email" id="form3Example3" class="form-control f16" formControlName="user_email" ngModel [email]="true" />
                 </div>
 
                 <!-- Password input -->

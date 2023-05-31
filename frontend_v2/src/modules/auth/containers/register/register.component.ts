@@ -1,28 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '@modules/auth/services/user.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent {
+  signupForm = inject(FormBuilder).nonNullable.group({
+    firstname: ['', Validators.required],
+    lastname: ['', Validators.required],
+    user_email: ['', Validators.required],
+    user_password: ['', Validators.required],
+    user_role: ['', Validators.required],
+  });
 
-  signupForm!:FormGroup;
-  constructor(private userService:UserService, private router:Router){}
+  success = false;
+  error = false;
+  errorMessage = 'Error Signing Up: ';
 
-  ngOnInit(): void {
-    this.signupForm=new FormGroup({
-      firstname:new FormControl('', [Validators.required]),
-      lastname:new FormControl('', [Validators.required]),
-      user_email:new FormControl('', [Validators.required]),
-      user_password:new FormControl('', [Validators.required]),
-      user_role:new FormControl('', [Validators.required])
-    });
-  }
-  
+  constructor(private userService: UserService, private router: Router) {}
+
   get user_email() {
     return this.signupForm.get('user_email');
   }
@@ -31,16 +31,28 @@ export class RegisterComponent implements OnInit{
     const value = this.signupForm.value;
 
     this.userService
-      .signup(value)
+      .signup(
+        this.signupForm.value as {
+          firstname: string;
+          lastname: string;
+          user_email: string;
+          user_password: string;
+          user_role: string;
+        }
+      )
       .subscribe({
-        next:(response)=>{
+        next: (response) => {
           if (response.success) {
-            this.router.navigate(['/auth/login']);
+            this.success = true;
+            setTimeout(() => {
+              this.router.navigate(['/auth/login']);
+            }, 1000);
           }
         },
-        error:(error)=>{
-          console.log(error);
-        }
+        error: (error) => {
+          this.error = true;
+          this.errorMessage += error.message;
+        },
       });
   }
 }

@@ -38,7 +38,7 @@ app.all("*", (req, res, next) => {
 });
 app.use((err, req, res, next) => {
   const status = err.status || 500;
-  res.status(status).json(err.message || "Internal Server Error");
+  res.status(status).json(err || { message: "Internal Server Error" });
 });
 
 //bootstrap
