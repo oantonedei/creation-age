@@ -11,7 +11,7 @@ import IContractState from '../models/IContractState.interface';
 export class ProjectsService {
   SERVER = environment.SERVER;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   createProject(project: {
     name: string;
@@ -36,10 +36,17 @@ export class ProjectsService {
 
   getMediaById(_id: string) {
     return this.http
-      .get<{ success: boolean; results: IMediaState, contracts: IContractState[] }>(
+      .get<{ success: boolean; results: IMediaState, contracts: IContractState[]; }>(
         this.SERVER + '/api/media/' + _id
-      )
+      );
   }
+
+  getContracts(id: string) {
+    return this.http.get<{ success: boolean; contracts: IContractState[]; }>(
+      this.SERVER + '/api/contracts/' + id
+    ).pipe(map((response) => response.contracts));
+  }
+  
   addParticipant(_id: string, participant: { skill: string, percentage_offered: number, contract_type: string }) {
     return this.http.post<{ success: boolean; results: IMediaState, contract: IContractState }>(
       this.SERVER + '/api/media/addteam/' + _id,

@@ -1,6 +1,16 @@
 const contractModel = require("../models/contractModel");
 const mediaModel = require("../models/mediaModel");
 
+module.exports.getAllContracts = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const results = await contractModel.find({ project_id: id});
+    res.json({ success: true, results });
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports.signContract = async (req, res, next) => {
   try {
     const { id } = req.params;

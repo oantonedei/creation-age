@@ -33,10 +33,11 @@
     padding: 15px 80px 15px 10px;
     display: block;
     position: relative;
+    text-decoration: none;
 }
 
 .main-timeline .timeline-content:hover {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .main-timeline .timeline-content:before {

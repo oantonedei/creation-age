@@ -5,7 +5,7 @@ import { CreateParticipantComponent } from '@modules/projects/components/create-
 import IContractState from '@modules/projects/models/IContractState.interface';
 import { ProjectsService } from '@modules/projects/services/projects.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { map, mergeMap } from 'rxjs';
+import { Observable, map, mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-project-detail',
@@ -16,25 +16,29 @@ export class ProjectDetailComponent implements OnInit, OnDestroy{
   projectsService = inject(ProjectsService);
   projectState!: IMediaState;
   contracts!: IContractState[];
+  projectContract$!: Observable<IContractState[]>;
   router = inject(Router);
-  count = 0;
+  id!: string;
 
   constructor(private modalService: NgbModal, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.pipe(
         map((params) => params.get('projectId') as string),
-        mergeMap((id) => this.projectsService.getMediaById(id))
+      mergeMap((id) => {
+        this.id = id;
+        return this.projectsService.getMediaById(id);
+      })
       )
       .subscribe((response) => {
         this.projectState = response.results;  
         this.contracts = response.contracts;
       });
+    
+    this.projectContract$ = this.projectsService.getContracts(this.id);
   }
 
   ngOnInit(): void {}
 
-  ngOnDestroy(): void {
-    this.count = 0;
-  }
+  ngOnDestroy(): void {}
 
   openCreateParticipantModal(){
     const createParticipantModalRef = this.modalService.open(CreateParticipantComponent);

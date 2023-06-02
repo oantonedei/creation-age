@@ -11,79 +11,20 @@
           <div class="row">
             <div class="col-md-12">
               <div class="main-timeline">
-                <div class="timeline">
-                  <a href="#" class="timeline-content">
-                    <div class="timeline-year">2021</div>
-                    <h3 class="title">Web Designing</h3>
+
+                <div *ngFor="let line of lineage" class="timeline">
+                  <a (click)="viewProject(line._id)" class="timeline-content">
+                    <div class="timeline-year" style="font-size: 1.4rem;">{{ line.createdAt | date }}</div>
+                    <h3 class="title">{{ line.name }}</h3>
                     <p class="description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Integer males uada tellus lorem, et condimentum neque
-                      commodo Integer males uada tellus lorem, et condimentum
-                      neque commodo
+                      {{ line.description }}
                     </p>
-                    <button class="btn app-btn-primary">View Project</button>
+                    <div *ngIf="line._id === id" class="alert alert-success" role="alert">
+                       {{ 'Current Project' | uppercase}}
+                    </div>
                   </a>
                 </div>
-                <div class="timeline">
-                  <a href="#" class="timeline-content">
-                    <div class="timeline-year">2020</div>
-                    <h3 class="title">Web Development</h3>
-                    <p class="description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Integer males uada tellus lorem, et condimentum neque
-                      commodo Integer males uada tellus lorem, et condimentum
-                      neque commodo
-                    </p>
-                  </a>
-                </div>
-                <div class="timeline">
-                  <a href="#" class="timeline-content">
-                    <div class="timeline-year">2020</div>
-                    <h3 class="title">Web Development</h3>
-                    <p class="description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Integer males uada tellus lorem, et condimentum neque
-                      commodo Integer males uada tellus lorem, et condimentum
-                      neque commodo
-                    </p>
-                  </a>
-                </div>
-                <div class="timeline">
-                  <a href="#" class="timeline-content">
-                    <div class="timeline-year">2020</div>
-                    <h3 class="title">Web Development</h3>
-                    <p class="description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Integer males uada tellus lorem, et condimentum neque
-                      commodo Integer males uada tellus lorem, et condimentum
-                      neque commodo
-                    </p>
-                  </a>
-                </div>
-                <div class="timeline">
-                  <a href="#" class="timeline-content">
-                    <div class="timeline-year">2020</div>
-                    <h3 class="title">Web Development</h3>
-                    <p class="description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Integer males uada tellus lorem, et condimentum neque
-                      commodo Integer males uada tellus lorem, et condimentum
-                      neque commodo
-                    </p>
-                  </a>
-                </div>
-                <div class="timeline">
-                  <a href="#" class="timeline-content">
-                    <div class="timeline-year">2020</div>
-                    <h3 class="title">Web Development</h3>
-                    <p class="description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Integer males uada tellus lorem, et condimentum neque
-                      commodo Integer males uada tellus lorem, et condimentum
-                      neque commodo
-                    </p>
-                  </a>
-                </div>
+
               </div>
             </div>
           </div>

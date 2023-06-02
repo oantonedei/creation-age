@@ -88,6 +88,54 @@
                 </div>
             </div>
 
+            <div class="card shadow-sm mt-4">
+                <div class="card-header">
+                    <h6 class="m-0">Project Contracts</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Skill</th>
+                                    <th>Percentage</th>
+                                    <th>Contract Type</th>
+                                    <th>Contract Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of contracts; let i = index">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ c.skill }}</td>
+                                    <td>{{ c.percentage_offered }}%</td>
+                                    <td>{{ c.contract_type }}</td>
+                                    <td>
+                                        <button *ngIf="c.contract_status !== 'pending'"
+                                            class="btn app-btn-primary" [disabled]="true">
+                                            Contract Not Signed
+                                        </button>
+                                        <button *ngIf="c.contract_status !== 'signed'" class="btn btn-dark" [disabled]="true">
+                                            Contract Signed
+                                        </button>
+                                    </td>
+                                    <!-- <td>
+                                                    <div ngbDropdown class="d-inline-block" display="dynamic" placement="bottom-end" container="body">
+                                                        <button type="button" class="btn btn-remove-outline table-action" id="dropdownBasic1" ngbDropdownToggle>
+                                                            <i class="fa fa-ellipsis-vertical"></i>
+                                                        </button>
+                                                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                                            <button ngbDropdownItem>Edit</button>
+                                                            <button ngbDropdownItem>Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         </div>
 

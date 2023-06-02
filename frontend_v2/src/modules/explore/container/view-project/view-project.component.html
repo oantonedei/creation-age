@@ -79,7 +79,7 @@
                 <tr *ngFor="let c of contracts; let i = index">
                   <td>{{ i + 1 }}</td>
                   <td>{{ c.skill }}</td>
-                  <td>{{ c.percentage_offered }}</td>
+                  <td>{{ c.percentage_offered }}%</td>
                   <td>{{ c.contract_type }}</td>
                   <td *ngIf="c.contract_status === 'pending'">
                     <button

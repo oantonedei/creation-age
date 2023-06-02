@@ -34,8 +34,8 @@ export class ExploreService {
   }
 
   getLineage(id: string) {
-    return this.http.get<{ success: boolean; results: IMediaState; }>(
-      this.SERVER + '/api/media/lineage/' + id
+    return this.http.get<{ success: boolean; lineage: IMediaState[]; }>(
+      this.SERVER + '/api/media/getlineage/' + id
     );
   }
 

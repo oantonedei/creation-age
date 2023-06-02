@@ -5,7 +5,7 @@ const contractModel = require("../models/contractModel");
 //Here, the audio file will be converted to text using 3rd-party API, and will be saved in the public folder, and the path will be saved in the database. The path will be used to access the file from the frontend.
 module.exports.getAllMedia = async (req, res, next) => {
   try {
-    const results = await mediaModel.find().sort({ createdAt: -1 } );
+    const results = await mediaModel.find().sort({ createdAt: -1 });
     res.json({ success: true, results });
   } catch (err) {
     next(err);
@@ -16,7 +16,7 @@ module.exports.getMediaById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const results = await mediaModel.findById(id);
-    const contracts = []
+    const contracts = [];
     for (let participant of results.participants) {
       const contract = await contractModel.findById(participant.contract_id);
       contracts.push(contract);
@@ -141,6 +141,27 @@ module.exports.addParticipant = async (req, res, next) => {
       }
     );
     res.json({ success: true, results, contract });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.getLineageFromLeaf = async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    let lineage = [];
+    lineage.push(await mediaModel.findById(id));
+    let result = await lineageModel.findOne({ project_id: id });
+    while (true) {
+      if (result.root_id !== null && result.parent_id !== null) {
+        id = result.parent_id;
+        lineage.push(await mediaModel.findById(id));
+        result = await lineageModel.findOne({ project_id: id });
+      } else {
+        break;
+      }
+    }
+    res.json({ success: true, lineage });
   } catch (err) {
     next(err);
   }

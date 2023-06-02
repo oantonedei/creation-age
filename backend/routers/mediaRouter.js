@@ -8,6 +8,7 @@ const {
   getAllCloseMedia,
   getAllParticipatorMedia,
   getUserMedia,
+  getLineageFromLeaf,
 } = require("../controllers/mediaController");
 const { checkToken } = require("../middlewares/checkToken");
 const mediaRouter = express.Router();
@@ -20,6 +21,7 @@ mediaRouter.get("/:id", checkToken, getMediaById);
 // mediaRouter.get("/close", checkToken, getAllCloseMedia);
 mediaRouter.get("/user/:userid", checkToken, getUserMedia);
 mediaRouter.get("/participator", checkToken, getAllParticipatorMedia);
+mediaRouter.get("/getlineage/:id", checkToken, getLineageFromLeaf);
 
 mediaRouter.post("/diverge/:id", checkToken, divergeMedia);
 mediaRouter.post("/addteam/:id", checkToken, addParticipant);
