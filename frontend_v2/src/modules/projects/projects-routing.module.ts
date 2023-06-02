@@ -10,10 +10,10 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'My Projects',
+      title: 'Projects',
       breadcrumbs: [
         {
-          text: 'My Projects',
+          text: 'Projects',
           active: true,
         },
       ],
@@ -41,11 +41,11 @@ const routes: Routes = [
       title: 'Project Detail',
       breadcrumbs: [
         {
-          text: 'My Projects',
+          text: 'Projects',
           link: '/projects',
         },
         {
-          text: 'Project Detail',
+          text: '',
           active: true,
         },
       ],

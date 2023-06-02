@@ -5,6 +5,7 @@ import { SBRouteData } from '@modules/navigation/models';
 import { ExploreComponent } from './container/explore/explore.component';
 import { ViewProjectComponent } from './container/view-project/view-project.component';
 
+localStorage.setItem('MEDIA_STATE', JSON.stringify('View Project'));
 const routes: Routes = [
   {
     path: '',
@@ -22,16 +23,16 @@ const routes: Routes = [
     component: ExploreComponent,
   },
   {
-    path: ':projectId',
+    path: ':id',
     data: {
       title: 'Explore',
       breadcrumbs: [
         {
           text: 'Explore',
-          link: '/explore'
+          link: '/explore',
         },
         {
-          text: 'Sample Project',
+          text: JSON.parse(localStorage.getItem('MEDIA_STATE') as string || ''),
           active: true,
         },
       ],

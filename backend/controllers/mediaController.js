@@ -12,23 +12,38 @@ module.exports.getAllMedia = async (req, res, next) => {
   }
 };
 
-module.exports.getAllOpenMedia = async (req, res, next) => {
+module.exports.getMediaById = async (req, res, next) => {
   try {
-    const results = await mediaModel.find({ status: "open" });
-    res.json({ success: true, results });
+    const { id } = req.params;
+    const results = await mediaModel.findById(id);
+    const contracts = []
+    for (let participant of results.participants) {
+      const contract = await contractModel.findById(participant.contract_id);
+      contracts.push(contract);
+    }
+    res.json({ success: true, results, contracts });
   } catch (err) {
     next(err);
   }
 };
 
-module.exports.getAllCloseMedia = async (req, res, next) => {
-  try {
-    const results = await mediaModel.find({ status: "close" });
-    res.json({ success: true, results });
-  } catch (err) {
-    next(err);
-  }
-};
+// module.exports.getAllOpenMedia = async (req, res, next) => {
+//   try {
+//     const results = await mediaModel.find({ status: "open" });
+//     res.json({ success: true, results });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+// module.exports.getAllCloseMedia = async (req, res, next) => {
+//   try {
+//     const results = await mediaModel.find({ status: "close" });
+//     res.json({ success: true, results });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 module.exports.getAllParticipatorMedia = async (req, res, next) => {
   try {
@@ -36,6 +51,16 @@ module.exports.getAllParticipatorMedia = async (req, res, next) => {
     const results = await mediaModel.find({
       participants: { $elemMatch: { participant_id: id } },
     });
+    res.json({ success: true, results });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.getUserMedia = async (req, res, next) => {
+  try {
+    const { userid } = req.params;
+    const results = await mediaModel.find({ user_id: userid });
     res.json({ success: true, results });
   } catch (err) {
     next(err);
@@ -115,7 +140,7 @@ module.exports.addParticipant = async (req, res, next) => {
         },
       }
     );
-    res.json({ success: true, results });
+    res.json({ success: true, results, contract });
   } catch (err) {
     next(err);
   }

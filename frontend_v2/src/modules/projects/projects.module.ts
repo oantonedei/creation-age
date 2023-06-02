@@ -7,6 +7,7 @@ import { ProjectsComponent } from './containers/projects/projects.component';
 import { AppCommonModule } from '@common/app-common.module';
 import { NavigationModule } from '@modules/navigation/navigation.module';
 import { CreateParticipantComponent } from './components/create-participant/create-participant.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CreateParticipantComponent } from './components/create-participant/crea
   imports: [
     CommonModule,
     AppCommonModule,
-    NavigationModule
+    NavigationModule,
+    ReactiveFormsModule
   ]
 })
 export class ProjectsModule { }

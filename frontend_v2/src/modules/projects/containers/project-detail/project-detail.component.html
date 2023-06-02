@@ -1,8 +1,8 @@
 <sb-layout-dashboard>
-    <sb-dashboard-head title="Sample Project" [hideBreadcrumbs]="false"></sb-dashboard-head>
+    <sb-dashboard-head [title]="projectState.name" [hideBreadcrumbs]="false"></sb-dashboard-head>
 
     <div class="row gy-3">
-        <div class="col-xl-8 col-lg-10 col-md-12">
+        <div class="col-md-12">
             <div class="card shadow-sm">
                 <div class="card-header">
                     <h6 class="m-0">Project Information</h6>
@@ -11,32 +11,32 @@
                     <form class="row gy-3">
                         <div class="col-xl-4 col-lg-6">
                             <p class="text-secondary f12">Name</p>
-                            <p class="text-dark f14">Sample Project 1</p>
+                            <p class="text-dark f14">{{ projectState.name }}</p>
                         </div>
                         <div class="col-xl-8 col-lg-12">
                             <p class="text-secondary f12">Description</p>
-                            <p class="text-dark f14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae tempor urna. Integer ullamcorper lorem eu mi ullamcorper, id volutpat magna convallis. Fusce non nisi non elit interdum volutpat.</p>
+                            <p class="text-dark f14">{{ projectState.description }}</p>
                         </div>
                         <div class="col-xl-4 col-lg-6">
                             <p class="text-secondary f12">Industry</p>
-                            <p class="text-dark f14">Health</p>
+                            <p class="text-dark f14">{{ projectState.industry }}</p>
                         </div>
                         <div class="col-xl-4 col-lg-6">
                             <p class="text-secondary f12">Phase</p>
-                            <p class="text-dark f14">Initiation Phase</p>
+                            <p class="text-dark f14">{{ projectState.phase }}</p>
                         </div>
                         <div class="col-xl-4 col-lg-6">
                             <p class="text-secondary f12">Status</p>
                             <p class="text-dark f14">
-                                <span class="badge rounded-pill bg-success"><i class="fa fa-check-circle"></i> Open</span>
-                                <span class="badge rounded-pill bg-secondary"><i class="fa fa-exclamation-circle"></i> Closed</span>
+                                <span *ngIf="projectState.status === 'open'" class="badge rounded-pill bg-success"><i class="fa fa-check-circle"></i> Open to Collaboration</span>
+                                <span *ngIf="projectState.status === 'close'" class="badge rounded-pill bg-secondary"><i class="fa fa-exclamation-circle"></i> Closed to Collaboration</span>
                             </p>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="card shadow-sm mt-4">
+            <div *ngIf="projectState.status === 'open'" class="card shadow-sm mt-4">
                 <div class="card-header">
                     <h6 class="m-0">Project Participants</h6>
                 </div>
@@ -49,17 +49,28 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Name</th>
                                     <th>Skill</th>
                                     <th>Percentage</th>
+                                    <th>Contract Type</th>
+                                    <th>Contract Status</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Software Engineer</td>
-                                    <td>15%</td>
-                                    <td>
+                                <tr *ngFor="let p of contracts; let i = index">
+                                    <td>{{ i + 1 }}</td>
+                                    <td *ngIf="p.participant_name">{{ p.participant_name }}</td>
+                                    <td *ngIf="!p.participant_name">-- Pending --</td>
+                                    <td>{{ p.skill }}</td>
+                                    <td>{{ p.percentage_offered }}%</td>
+                                    
+                                
+                                    <td>{{ p.contract_type }}</td>
+                                    <td>{{ p.contract_status }}</td>
+                                    
+
+                                    <!-- <td>
                                         <div ngbDropdown class="d-inline-block" display="dynamic" placement="bottom-end" container="body">
                                             <button type="button" class="btn btn-remove-outline table-action" id="dropdownBasic1" ngbDropdownToggle>
                                                 <i class="fa fa-ellipsis-vertical"></i>
@@ -69,7 +80,7 @@
                                                 <button ngbDropdownItem>Delete</button>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </tbody>
                         </table>

@@ -7,10 +7,11 @@ import { NavigationModule } from '@modules/navigation/navigation.module';
 
 import { ExploreComponent } from './container/explore/explore.component';
 import { ViewProjectComponent } from './container/view-project/view-project.component';
+import { SignContractComponent } from './components/sign-contract/sign-contract.component';
 
 
 @NgModule({
-  declarations: [ExploreComponent, ViewProjectComponent],
+  declarations: [ExploreComponent, ViewProjectComponent, SignContractComponent],
   imports: [
     CommonModule,
     AppCommonModule,

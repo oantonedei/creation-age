@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import IMediaState from '@modules/explore/models/IMediaState.interface';
+import { ExploreService } from '@modules/explore/services/explore.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-explore',
@@ -8,18 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./explore.component.scss'],
 })
 export class ExploreComponent {
-  router= inject(Router);
-  count = [
-    { name: "Creation Age", value: "1" },
-    { name: "Creation Age Version 2", value: "2" },
-    { name: "Optimus Age", value: "3" },
-    { name: "Optimus Era", value: "4" },
-    { name: "Optimus Era Version 2", value: "5" },
-    { name: "Optimus Era Version 3", value: "6" },
-    { name: "Armagedon", value: "7" },
-  ];
-  viewProject(event: any) {
-    console.log(event);
-    this.router.navigate(['/projects/1']);
+  router = inject(Router);
+  exploreService = inject(ExploreService);
+  mediaState$!: Observable<IMediaState[]>;
+
+  constructor() { 
+    this.fetchMedia();
+  }
+  
+  fetchMedia() {
+    this.mediaState$ = this.exploreService.getAllMedia();
+  }
+  viewProject(id: string) {    
+    this.router.navigate(['explore', id]);
   }
 }

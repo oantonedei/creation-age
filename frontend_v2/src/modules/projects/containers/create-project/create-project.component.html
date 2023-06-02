@@ -2,53 +2,54 @@
     <sb-dashboard-head title="Create Project" [hideBreadcrumbs]="false"></sb-dashboard-head>
 
     <div class="row gy-3">
-        <div class="col-xl-4 col-lg-6 col-md-8">
+        <div class="col-md-12">
             <div class="card shadow-sm">
                 <div class="card-header">
                     <h6 class="m-0">Project Information</h6>
                 </div>
                 <div class="card-body">
-                    <form class="row gy-3">
+                    <form [formGroup]="projectForm" (ngSubmit)="createProject()" class="row gy-3">
                         <div class="col-12">
-                            <label for="name" class="text-secondary">* Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Project name" />
+                            <label for="name" class="text-secondary">Project Name <span style="color: red;">*</span></label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter Project name" formControlName="name" />
                         </div>
                         <div class="col-12">
-                            <label for="description" class="text-secondary">* Description</label>
-                            <textarea type="text" id="description" class="form-control"
-                                placeholder="Project description"></textarea>
+                            <label for="description" class="text-secondary">Project Description <span style="color: red;">*</span></label>
+                            <textarea type="text" id="description" rows="6" class="form-control" formControlName="description"
+                                placeholder="Enter Project Description"></textarea>
                         </div>
                         <div class="col-12">
-                            <label for="industry" class="text-secondary">* Industry</label>
-                            <select id="industry" class="form-select">
-                                <option>- Choose option -</option>
+                            <label for="industry" class="text-secondary">Industry <span style="color: red;">*</span></label>
+                            <select id="industry" class="form-select" formControlName="industry">
+                                <option>Select Option</option>
                                 <option value="Entertainment">Entertainment</option>
                                 <option value="Eductaion">Education</option>
                                 <option value="Health">Health</option>
                             </select>
                         </div>
                         <div class="col-12">
-                            <label for="phase" class="text-secondary">* Phase</label>
-                            <select class="form-select" id="phase">
-                                <option>- Choose option -</option>
-                                <option value="Initiation">Initiation</option>
+                            <label for="phase" class="text-secondary">Phase <span style="color: red;">*</span></label>
+                            <select class="form-select" id="phase" formControlName="phase">
+                                <option>Select Option</option>
+                                <option value="Initiation">Initiation/Inception</option>
+                                <option value="Ideation">Ideation</option>
+                                <option value="Design">Design</option>
                             </select>
                         </div>
                         <div class="col-12">
-                            <label for="status" class="text-secondary">* Status</label>
-                            <select class="form-select" id="status">
-                                <option>- Choose option -</option>
+                            <label for="status" class="text-secondary">Status <span style="color: red;">*</span></label>
+                            <select class="form-select" id="status" formControlName="status">
+                                <option>Select Option</option>
                                 <option value="open">Open</option>
                                 <option value="close">Close</option>
                             </select>
                         </div>
+                        <div class="card-footer d-flex justify-content-end bg-white">
+                            <button type="submit" class="btn app-btn-primary px-4" [disabled]="!projectForm.valid"><i class="fa fa-check-circle"></i> Create</button>
+                        </div>
                     </form>
-                </div>
-                <div class="card-footer d-flex justify-content-end bg-white">
-                    <button type="button" class="btn app-btn-primary px-4"><i class="fa fa-check-circle"></i> Create</button>
                 </div>
             </div>
         </div>
-
     </div>
 </sb-layout-dashboard>

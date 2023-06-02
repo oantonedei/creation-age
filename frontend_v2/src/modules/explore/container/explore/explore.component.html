@@ -1,26 +1,44 @@
 <sb-layout-dashboard>
     <sb-dashboard-head title="Explore" [hideBreadcrumbs]="false"></sb-dashboard-head>
-
+    
     <div class="row gy-3">
-            <div *ngFor="let c of count" (click)="viewProject(c.value)" class="col-lg-4">
+        <div class="text-end mt-2 mt-sm-0">
+            <div class="dropdown">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Sort by  <i class="fa fa-sliders" aria-hidden="true"></i> 
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Open Projects</button>
+                    <button class="dropdown-item" type="button">Closed Projects</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div *ngIf="mediaState$ | async as mediaContents" class="row gy-3">
+            <div *ngFor="let media of mediaContents" (click)="viewProject(media._id)" class="col-lg-4">
                 <div class="card">
                     <img src="https://cdn.pixabay.com/photo/2016/10/19/19/09/interior-1753743_1280.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{c.name}}</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-                            This content is a little bit longer.</p>
+                        <h5 class="card-title">{{media.name}}</h5>
+                        <p class="card-text">{{media.description}}</p>
     
                         <br/>
-                        <p class="text-muted">Status <span class="badge rounded-pill bg-app-blue">Open to Collaboration</span></p>
+                        <p class="text-muted"><small>Status </small>
+                            <span *ngIf="media.status === 'close'" class="badge rounded-pill bg-danger"><i class="fa fa-exclamation-circle"></i> Close to collaboration</span>
+                            <span *ngIf="media.status === 'open'" class="badge rounded-pill bg-app-blue"><i class="fa fa-check-circle"></i> Open to collaboration</span>
+                        </p>
                         
-                        <p class="text-muted">Phase <span class="badge rounded-pill bg-info">Inception</span></p>
+                        <p class="text-muted"><small>Phase </small><span class="badge rounded-pill bg-info">{{media.phase}}</span></p>
                         
                         <br/>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><small class="text-muted">Last update by: {{ media.createdAt | date:'medium' }}</small></p>
                     </div>
                 </div>
             </div>
-
     </div>
 
     
