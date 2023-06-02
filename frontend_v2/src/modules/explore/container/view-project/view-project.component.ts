@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SignContractComponent } from '@modules/explore/components/sign-contract/sign-contract.component';
 import IMediaState from '@modules/explore/models/IMediaState.interface';
 import { ExploreService } from '@modules/explore/services/explore.service';
@@ -16,7 +16,8 @@ export class ViewProjectComponent implements OnDestroy {
   exploreService = inject(ExploreService);
   mediaState!: IMediaState;
   contracts!: IContractState[];
-  count = 0;
+  router = inject(Router);
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private modalService: NgbModal
@@ -38,7 +39,18 @@ export class ViewProjectComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     localStorage.removeItem('MEDIA_STATE');
-    this.count = 0;
+  }
+
+  branchProject(id: string) {
+    this.exploreService.branchProject(id).subscribe((response) => {
+      if (response.success) {
+        this.router.navigate(['projects', response.results._id]);
+      }
+    });
+  }
+
+  viewLineage(id: string) {
+    this.router.navigate(['explore', id, 'lineage']);
   }
 
   openContractModal(id: String) {

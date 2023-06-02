@@ -12,7 +12,9 @@
             <div class="flex-fill">
               <h3 class="m-0 text-white">{{ mediaState.name }}</h3>
             </div>
-            <button type="button" class="btn btn-light">View Lineage</button>
+            <button (click)="viewLineage(mediaState._id)" type="button" class="btn btn-light"><i class="fa fa-tree"></i> View Lineage</button>
+            &nbsp;
+            <button (click)="branchProject(mediaState._id)" *ngIf="mediaState.status === 'close'" type="button" class="btn btn-dark"><i class="fa fa-code-fork"></i> Diverge Project</button>
           </div>
         </div>
         <div class="card-body">

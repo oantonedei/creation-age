@@ -33,11 +33,24 @@ export class ExploreService {
     }>(this.SERVER + '/api/media/' + _id);
   }
 
+  getLineage(id: string) {
+    return this.http.get<{ success: boolean; results: IMediaState; }>(
+      this.SERVER + '/api/media/lineage/' + id
+    );
+  }
+
   signContract(id: String) {
     return this.http.post<{
       success: boolean;
       updatedContract: {};
       updatedMedia: {};
     }>(this.SERVER + '/api/contracts/sign/' + id, {});
+  }
+
+  branchProject(id: string) {
+    return this.http.post<{ success: boolean; results: IMediaState, lineage: {} }>(
+      this.SERVER + '/api/media/diverge/' + id,
+      {}
+    );
   }
 }

@@ -5,7 +5,7 @@ const contractModel = require("../models/contractModel");
 //Here, the audio file will be converted to text using 3rd-party API, and will be saved in the public folder, and the path will be saved in the database. The path will be used to access the file from the frontend.
 module.exports.getAllMedia = async (req, res, next) => {
   try {
-    const results = await mediaModel.find();
+    const results = await mediaModel.find().sort({ createdAt: -1 } );
     res.json({ success: true, results });
   } catch (err) {
     next(err);

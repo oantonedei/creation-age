@@ -4,6 +4,7 @@ import { ExploreModule } from './explore.module';
 import { SBRouteData } from '@modules/navigation/models';
 import { ExploreComponent } from './container/explore/explore.component';
 import { ViewProjectComponent } from './container/view-project/view-project.component';
+import { ViewLineageComponent } from './container/view-lineage/view-lineage.component';
 
 localStorage.setItem('MEDIA_STATE', JSON.stringify('View Project'));
 const routes: Routes = [
@@ -32,13 +33,33 @@ const routes: Routes = [
           link: '/explore',
         },
         {
-          text: JSON.parse(localStorage.getItem('MEDIA_STATE') as string || ''),
+          text: JSON.parse(
+            (localStorage.getItem('MEDIA_STATE') as string) || ''
+          ),
           active: true,
         },
       ],
     } as SBRouteData,
     canActivate: [],
     component: ViewProjectComponent,
+  },
+  {
+    path: ':id/lineage',
+    data: {
+      title: 'Explore',
+      breadcrumbs: [
+        {
+          text: 'Explore',
+          link: '/explore',
+        },
+        {
+          text: 'Lineage Tree',
+          active: true,
+        },
+      ],
+    } as SBRouteData,
+    canActivate: [],
+    component: ViewLineageComponent,
   },
 ];
 
